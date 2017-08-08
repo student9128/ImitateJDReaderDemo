@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -39,6 +41,8 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
     @Override
     public void initView() {
         mLinearLayoutManager = new LinearLayoutManager(this);
+//        mLinearLayoutManager = new VariableScrollSpeedLinearLayoutManager(this, 5);
+//        mLinearLayoutManager = new ScrollSpeedLinearLayoutManger(this);
         rvRecyclerView.setLayoutManager(mLinearLayoutManager);
         fillData();
         mAdapter = new LeftRecyclerViewAdapter(mData, this);
@@ -106,15 +110,17 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
         if (n <= firstItem) {
             //当要置顶的项在当前显示的第一个项的前面时
 //            rvRecyclerView.scrollToPosition(n);//有bug
-            rvRecyclerView.smoothScrollBy(0, rvRecyclerView.getChildAt(n - firstItem).getTop());
+            rvRecyclerView.smoothScrollBy(0, rvRecyclerView.getChildAt(n - firstItem).getTop(), new LinearInterpolator());
         } else if (n <= lastItem) {
             //当要置顶的项已经在屏幕上显示时
             int top = rvRecyclerView.getChildAt(n - firstItem).getTop();
 //            rvRecyclerView.scrollBy(0, top);
-            rvRecyclerView.smoothScrollBy(0, top);
+            rvRecyclerView.smoothScrollBy(0, top, new LinearInterpolator());
+//            rvRecyclerView.smoothScrollToPosition(n);
         } else {
             //当要置顶的项在当前显示的最后一项的后面时
             rvRecyclerView.scrollToPosition(n);
+
             //这里这个变量是用在RecyclerView滚动监听里面的
 //            move = true;
         }
