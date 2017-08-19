@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -46,6 +47,7 @@ public class RecyclerViewActivity extends BaseActivity implements View.OnClickLi
     private List<String> data = new ArrayList<>();
     private RecyclerViewRightAdapter indexQueryRightAdapter;
     private String taskPasition;
+    private LinearLayoutManager mLinearLayoutManager;
 
     @Override
     protected int setLayoutResId() {
@@ -64,7 +66,8 @@ public class RecyclerViewActivity extends BaseActivity implements View.OnClickLi
         mRecyclerViewRight = (RecyclerView) findViewById(R.id.rv_recycler_view_right);
 //        mTvIndexQuerySortName = (TextView) findViewById(R.id.tv_index_query_sort_name);
 //        mFlContent = (FrameLayout) findViewById(R.id.fl_content);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mLinearLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
 //        mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL_LIST));
         for (int i = 0; i < 20; i++) {
@@ -121,11 +124,39 @@ public class RecyclerViewActivity extends BaseActivity implements View.OnClickLi
             lineType.add("xxx" + i);
         }
         indexQueryRightAdapter.updateData(lineType);
+        moveToPosition(position);
     }
 
     @Override
     public void onRightItemClick(int position) {
 
         showToast("You clicked:\t" + position);
+    }
+
+    private void moveToPosition(int n) {
+        //先从RecyclerView的LayoutManager中获取第一项和最后一项的Position
+        int firstItem = mLinearLayoutManager.findFirstVisibleItemPosition();
+        int lastItem = mLinearLayoutManager.findLastVisibleItemPosition();
+        printLogd("firstItem:\t" + firstItem);
+        printLogd("lastItem:\t" + lastItem);
+        //然后区分情况
+        if (n <= firstItem) {
+            //当要置顶的项在当前显示的第一个项的前面时
+//            rvRecyclerView.scrollToPosition(n);//有bug
+            mRecyclerView.smoothScrollBy(0, mRecyclerView.getChildAt(n - firstItem).getTop(), new LinearInterpolator());
+        } else if (n <= lastItem) {
+            //当要置顶的项已经在屏幕上显示时
+            int top = mRecyclerView.getChildAt(n - firstItem).getTop();
+//            mRecyclerView.scrollBy(0, top);
+            mRecyclerView.smoothScrollBy(0, top, new LinearInterpolator());
+//            mRecyclerView.smoothScrollToPosition(n);
+        } else {
+            //当要置顶的项在当前显示的最后一项的后面时
+            mRecyclerView.scrollToPosition(n);
+
+            //这里这个变量是用在RecyclerView滚动监听里面的
+//            move = true;
+        }
+
     }
 }

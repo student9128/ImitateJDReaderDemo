@@ -118,7 +118,7 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textItem = itemView.findViewById(R.id.tv_recycler_item);
+            textItem = (TextView) itemView.findViewById(R.id.tv_recycler_item);
             viewLine = itemView.findViewById(R.id.view);
         }
     }

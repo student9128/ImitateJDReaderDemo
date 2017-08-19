@@ -61,7 +61,7 @@ public class RecyclerViewLeftAdapter extends RecyclerView.Adapter<RecyclerViewLe
             }
         });
         if (index == position) {
-            holder.textView.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_1));
+            holder.textView.setBackgroundColor(ContextCompat.getColor(context, R.color.white_1));
             holder.textView.setTextColor(ContextCompat.getColor(context, R.color.orange));
             holder.viewLine.setVisibility(View.VISIBLE);
         } else {

@@ -53,9 +53,9 @@ public class RightRecyclerViewAdapter extends RecyclerView.Adapter<RightRecycler
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.iv_recycler_image);
-            textItem1 = itemView.findViewById(R.id.tv_recycler_item_1);
-            textItem2 = itemView.findViewById(R.id.tv_recycler_item_2);
+            imageView = (ImageView) itemView.findViewById(R.id.iv_recycler_image);
+            textItem1 = (TextView) itemView.findViewById(R.id.tv_recycler_item_1);
+            textItem2 = (TextView) itemView.findViewById(R.id.tv_recycler_item_2);
         }
     }
 }
