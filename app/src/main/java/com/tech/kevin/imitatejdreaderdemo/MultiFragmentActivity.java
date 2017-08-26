@@ -1,11 +1,8 @@
 package com.tech.kevin.imitatejdreaderdemo;
 
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -33,6 +30,7 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
     private LeftRecyclerViewAdapter mAdapter;
     private LinearLayoutManager mLinearLayoutManager;
 
+
     @Override
     protected int setLayoutResId() {
         return R.layout.activity_multi_fragment;
@@ -41,8 +39,6 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
     @Override
     public void initView() {
         mLinearLayoutManager = new LinearLayoutManager(this);
-//        mLinearLayoutManager = new VariableScrollSpeedLinearLayoutManager(this, 5);
-//        mLinearLayoutManager = new ScrollSpeedLinearLayoutManger(this);
         rvRecyclerView.setLayoutManager(mLinearLayoutManager);
         fillData();
         mAdapter = new LeftRecyclerViewAdapter(mData, this);
@@ -94,8 +90,6 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
         int mVisibleCount = mLinearLayoutManager.findLastVisibleItemPosition()
                 - mLinearLayoutManager.findFirstVisibleItemPosition() + 1;
         printLogd("visibleCount:" + mVisibleCount);
-//        rvRecyclerView.scrollTo(0, 50);
-//        mLinearLayoutManager.scrollToPositionWithOffset(position, 0);
         moveToPosition(position);
     }
 
@@ -114,7 +108,6 @@ public class MultiFragmentActivity extends BaseActivity implements LeftRecyclerV
         } else if (n <= lastItem) {
             //当要置顶的项已经在屏幕上显示时
             int top = rvRecyclerView.getChildAt(n - firstItem).getTop();
-//            rvRecyclerView.scrollBy(0, top);
             rvRecyclerView.smoothScrollBy(0, top, new LinearInterpolator());
 //            rvRecyclerView.smoothScrollToPosition(n);
         } else {

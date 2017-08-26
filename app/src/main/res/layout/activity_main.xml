@@ -32,12 +32,6 @@
             android:text="Method One" />
 
         <Button
-            android:id="@+id/btn_method_two"
-            style="@style/style_button_activity_main"
-            android:layout_marginTop="@dimen/margin_10"
-            android:text="Method Two" />
-
-        <Button
             android:id="@+id/btn_method_three"
             style="@style/style_button_activity_main"
             android:layout_marginTop="@dimen/margin_10"

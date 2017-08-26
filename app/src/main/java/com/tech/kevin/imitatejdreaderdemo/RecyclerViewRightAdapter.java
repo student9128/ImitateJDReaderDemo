@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by <a href="http://blog.csdn.net/student9128">JingPeng</a> on 2017/7/26.
+ * Created by <a href="http://blog.csdn.net/student9128">Kevin</a> on 2017/7/26.
  * <p>
  * <h3>Description:</h3>
  * <p/>
@@ -60,27 +60,42 @@ public class RecyclerViewRightAdapter extends RecyclerView.Adapter<RecyclerViewR
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-//        holder.imageView.setImageResource(icon[position]);
-//        String img = lineTypeBean.getTypeName().trim();
-//        if ("存款类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_deposit);
-//        } else if ("贷款类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_loan);
-//        } else if ("利润类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_profits);
-//        } else if ("客户类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_customer);
-//        } else if ("发放类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_issue);
-//        } else if ("营运类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_operating);
-//        } else if ("中收类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_intheclosed);
-//        } else if ("全部类".equals(img)) {
-//            holder.imageView.setImageResource(R.drawable.ic_repository_all);
-//        }
-//        String typeIcon = lineTypeBean.getTypeIcon();//icon name
-        holder.textView.setText(data.get(position));
+        String img = data.get(position);
+        if ("0".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_oreo_1);
+            holder.textView.setText("Android O");
+        } else if ("1".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_n_1);
+            holder.textView.setText("Android N");
+        } else if ("2".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_m_1);
+            holder.textView.setText("Android M");
+        } else if ("3".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_lollipop_1);
+            holder.textView.setText("Android L");
+        } else if ("4".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_oreo_2);
+            holder.textView.setText("Android O");
+        } else if ("5".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_oreo_3);
+            holder.textView.setText("Android O");
+        } else if ("6".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_n_2);
+            holder.textView.setText("Android N");
+        } else if ("7".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_lollipop_2);
+            holder.textView.setText("Android L");
+        } else if ("8".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_oreo_4);
+            holder.textView.setText("Android O");
+        } else if ("9".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_m_2);
+            holder.textView.setText("Android M");
+        } else if ("10".equals(img)) {
+            holder.imageView.setImageResource(R.drawable.ic_icon);
+            holder.textView.setText("Android");
+        }
+
         holder.llItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

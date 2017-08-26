@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 /**
- * Created by <a href="http://blog.csdn.net/student9128">JingPeng</a> on 2017/7/25.
+ * Created by <a href="http://blog.csdn.net/student9128">Kevin</a> on 2017/7/25.
  * <p>
  * <h3>Description:</h3>
  * <p>
@@ -55,14 +55,12 @@ public class RecyclerViewLeftAdapter extends RecyclerView.Adapter<RecyclerViewLe
                 if (listener != null) {
                     listener.onLeftItemClick(position);
                 }
-//                ToastUtils.showToast(context, data.get(position));
-//                holder.textView.setBackgroundResource(R.color.white);
                 notifyDataSetChanged();
             }
         });
         if (index == position) {
-            holder.textView.setBackgroundColor(ContextCompat.getColor(context, R.color.gray_1));
-            holder.textView.setTextColor(ContextCompat.getColor(context, R.color.orange));
+            holder.textView.setBackgroundColor(ContextCompat.getColor(context, R.color.white_1));
+            holder.textView.setTextColor(ContextCompat.getColor(context, R.color.blue));
             holder.viewLine.setVisibility(View.VISIBLE);
         } else {
             holder.textView.setBackgroundColor(ContextCompat.getColor(context, R.color.white));

@@ -11,8 +11,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @BindView(R.id.btn_method_one)
     Button btnMethodOne;
-    @BindView(R.id.btn_method_two)
-    Button btnMethodTwo;
     @BindView(R.id.btn_method_three)
     Button btnMethodThree;
 
@@ -34,7 +32,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void initListener() {
         btnMethodOne.setOnClickListener(this);
-        btnMethodTwo.setOnClickListener(this);
         btnMethodThree.setOnClickListener(this);
     }
 
@@ -44,9 +41,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (view.getId()) {
             case R.id.btn_method_one:
                 startActivity(new Intent(this, MultiFragmentActivity.class));
-                break;
-            case R.id.btn_method_two:
-                startActivity(new Intent(this, SingleFragmentActivity.class));
                 break;
             case R.id.btn_method_three:
                 startActivity(new Intent(this, RecyclerViewActivity.class));

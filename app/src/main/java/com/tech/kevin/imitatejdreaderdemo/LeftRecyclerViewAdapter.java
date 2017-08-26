@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,7 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
     private List<String> data;
     private Context context;
     private SparseBooleanArray selectedItems;
-    private int index =0;//默认选中第一个条目
+    private int index = 0;//默认选中第一个条目
 
     public LeftRecyclerViewAdapter(List<String> data, Context context) {
         this.data = data;
@@ -35,39 +34,6 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
         this.selectedItems = new SparseBooleanArray();
     }
 
-
-//    public boolean isSelected(int position) {
-//        return getSelectedItems().contains(position);
-//    }
-//
-//    public void switchSelectedState(int position) {
-//        if (selectedItems.get(position, false)) {
-//            selectedItems.delete(position);
-//        } else {
-//            selectedItems.put(position, true);
-//        }
-//        notifyItemChanged(position);
-//    }
-//
-//    public void clearSelectedState() {
-//        List<Integer> selection = getSelectedItems();
-//        selectedItems.clear();
-//        for (Integer i : selection) {
-//            notifyItemChanged(i);
-//        }
-//    }
-//
-//    public int getSelectedItemCount() {
-//        return selectedItems.size();
-//    }
-
-//    public List<Integer> getSelectedItems() {
-//        List<Integer> items = new ArrayList<>(selectedItems.size());
-//        for (int i = 0; i < selectedItems.size(); ++i) {
-//            items.add(selectedItems.keyAt(i));
-//        }
-//        return items;
-//    }
 
     @Override
     public LeftRecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -94,7 +60,7 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
         });
         if (index == position) {
             holder.textItem.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
-            holder.textItem.setTextSize(TypedValue.COMPLEX_UNIT_SP,16);
+            holder.textItem.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
             holder.textItem.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
             holder.textItem.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             holder.viewLine.setVisibility(View.VISIBLE);
@@ -118,7 +84,7 @@ public class LeftRecyclerViewAdapter extends RecyclerView.Adapter<LeftRecyclerVi
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textItem = itemView.findViewById(R.id.tv_recycler_item);
+            textItem = (TextView) itemView.findViewById(R.id.tv_recycler_item);
             viewLine = itemView.findViewById(R.id.view);
         }
     }
